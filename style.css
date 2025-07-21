@@ -31,17 +31,44 @@ h1 {
   transition: width 0.5s ease-in-out;
 }
 
-#malla-container {
+#btnReiniciar {
+  padding: 8px 16px;
+  background-color: #d63384;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#btnReiniciar:hover {
+  background-color: #b0276d;
+}
+
+/* Nuevo estilos para años y columnas */
+.ano {
+  margin-bottom: 40px;
+}
+
+.ano h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #62145e;
+}
+
+.columnas-semestres {
   display: flex;
-  gap: 20px;
   justify-content: center;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding-bottom: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .semestre {
-  min-width: 220px;
+  flex: 1 1 45%;
+  min-width: 280px;
   background: #f7a8c4;
   border-radius: 15px;
   padding: 10px;
@@ -81,16 +108,12 @@ h1 {
 }
 
 .ramo.aprobado {
-  background-color: #d63384;
-  color: white;
-}
-
-.ramo:hover.desbloqueado {
-  filter: brightness(1.1);
-}
-.ramo.aprobado {
   background-color: #8ed6a0;  /* verde suave para destacar */
   color: #103c24;
   border: 2px solid #4caf50;
   box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
+}
+
+.ramo:hover.desbloqueado {
+  filter: brightness(1.1);
 }
