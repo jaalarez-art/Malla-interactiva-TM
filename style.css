@@ -48,13 +48,18 @@ h1 {
 
 #malla-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;  /* 🔹 Cambia a fila horizontal */
   gap: 40px;
-  align-items: center;
+  align-items: flex-start;
+  overflow-x: auto;
+  padding: 20px;
 }
 
 .ano {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* 🔹 Centra el texto */
+  min-width: 600px;     /* 🔹 Ancho mínimo para scroll */
 }
 
 .ano h2 {
