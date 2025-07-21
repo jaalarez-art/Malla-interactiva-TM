@@ -70,7 +70,7 @@ h1 {
 .columnas-semestres {
   display: flex;
   justify-content: center;
-  gap: 120px; /* ⬅️ Aumenta este valor para más espacio entre semestres */
+  gap: 150px; /* ⬅️ Aumenta este valor para más espacio entre semestres */
   flex-wrap: nowrap;
   overflow-x: auto;
   padding-bottom: 20px; /* un poco más de espacio inferior */
