@@ -70,10 +70,10 @@ h1 {
 .columnas-semestres {
   display: flex;
   justify-content: center;
-  gap: 40px;
-  flex-wrap: nowrap; /* Evita que los semestres se bajen */
-  overflow-x: auto;   /* Permite scroll horizontal si se necesita */
-  padding-bottom: 10px;
+  gap: 80px; /* ⬅️ Aumenta este valor para más espacio entre semestres */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 20px; /* un poco más de espacio inferior */
 }
 
 .semestre {
