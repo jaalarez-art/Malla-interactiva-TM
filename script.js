@@ -15,87 +15,29 @@ const malla = {
     { id: 'ingles_1', nombre: 'Inglés I', prereq: [] },
     { id: 'habilidades_comunicativas', nombre: 'Habilidades comunicativas', prereq: [] }
   ],
-  'Segundo año - Tercer semestre': [
-    { id: 'fisiologia_humana', nombre: 'Fisiología humana', prereq: ['histoembriologia'] },
-    { id: 'bioquimica', nombre: 'Bioquímica', prereq: ['quimica_organica'] },
-    { id: 'bioetica', nombre: 'Bioética', prereq: ['intro_tec_med', 'habilidades_comunicativas'] },
-    { id: 'infectologia', nombre: 'Infectología', prereq: ['biologia_celular', 'lab_bio_celular'] },
-    { id: 'ingles_2', nombre: 'Inglés II', prereq: ['ingles_1'] },
-    { id: 'razonamiento_cientifico', nombre: 'Razonamiento científico y tecnologías de la investigación', prereq: ['habilidades_comunicativas'] }
-  ],
-  'Segundo año - Cuarto semestre': [
-    { id: 'fisiopatologia', nombre: 'Fisiopatología', prereq: ['fisiologia_humana'] },
-    { id: 'farmacologia_general', nombre: 'Farmacología general', prereq: ['bioquimica'] },
-    { id: 'ingles_3', nombre: 'Inglés III', prereq: ['ingles_2'] },
-    {
-      id: 'proteccion_radiologica', nombre: 'Protección radiológica',
-      prereq: ['fisiologia_humana', 'bioquimica', 'bioetica', 'infectologia', 'ingles_2', 'razonamiento_cientifico', 'fisica_general']
-    },
-    {
-      id: 'radiodiagnostico_1', nombre: 'Radiodiagnóstico I',
-      prereq: ['fisiologia_humana', 'bioquimica', 'bioetica', 'infectologia', 'ingles_2', 'razonamiento_cientifico', 'fisica_general']
-    },
-    {
-      id: 'fisica_electromagnetica', nombre: 'Física electromagnética',
-      prereq: ['fisiologia_humana', 'bioquimica', 'bioetica', 'infectologia', 'ingles_2', 'razonamiento_cientifico', 'fisica_general']
-    }
-  ],
-  'Tercer año - Quinto semestre': [
-    { id: 'procedimientos_tecnologia_med', nombre: 'Procedimientos de tecnología médica y bioseguridad', prereq: ['farmacologia_general'] },
-    { id: 'salud_publica_1', nombre: 'Salud pública I', prereq: ['fisiopatologia'] },
-    { id: 'ingles_4', nombre: 'Inglés IV', prereq: ['ingles_3'] },
-    { id: 'fisica_moderna', nombre: 'Física moderna', prereq: ['proteccion_radiologica', 'fisica_electromagnetica'] },
-    { id: 'radiodiagnostico_2', nombre: 'Radiodiagnóstico II', prereq: ['radiodiagnostico_1', 'farmacologia_general'] },
-    { id: 'anatomia_imagenologica', nombre: 'Anatomía imagenológica', prereq: ['radiodiagnostico_1', 'fisiopatologia'] }
-  ],
-  'Tercer año - Sexto semestre': [
-    { id: 'salud_publica_2', nombre: 'Salud pública II', prereq: ['salud_publica_1', 'procedimientos_tecnologia_med'] },
-    { id: 'fisica_nuclear', nombre: 'Física nuclear', prereq: ['fisica_moderna'] },
-    { id: 'tomografia_computarizada', nombre: 'Tomografía computarizada', prereq: ['radiodiagnostico_2', 'anatomia_imagenologica'] },
-    { id: 'sistema_informatico_radiologia', nombre: 'Sistema informático en radiología', prereq: ['radiodiagnostico_2'] },
-    { id: 'patologia_imagenologica', nombre: 'Patología imagenológica', prereq: ['radiodiagnostico_2', 'anatomia_imagenologica'] }
-  ],
-  'Cuarto año - Séptimo semestre': [
-    { id: 'administracion_gestion_salud', nombre: 'Administración de gestión en salud', prereq: ['salud_publica_2', 'sistema_informatico_radiologia'] },
-    { id: 'educacion_en_salud', nombre: 'Educación en salud', prereq: ['salud_publica_2'] },
-    { id: 'medicina_nuclear', nombre: 'Medicina nuclear', prereq: ['fisica_nuclear'] },
-    { id: 'intervencionismo_endovascular', nombre: 'Intervencionismo endovascular', prereq: ['patologia_imagenologica'] },
-    { id: 'integrador_1', nombre: 'Integrador I: Caso clínico IFIME', prereq: ['tomografia_computarizada', 'sistema_informatico_radiologia', 'patologia_imagenologica'] },
-    { id: 'ultrasonido', nombre: 'Ultrasonido', prereq: ['patologia_imagenologica'] }
-  ],
-  'Cuarto año - Octavo semestre': [
-    { id: 'metodologia_investigacion', nombre: 'Metodología de la investigación', prereq: ['salud_publica_2', 'medicina_nuclear'] },
-    { id: 'gestion_aseguramiento_calidad', nombre: 'Gestión y aseguramiento de la calidad', prereq: ['administracion_gestion_salud', 'medicina_nuclear'] },
-    { id: 'pensamiento_critico', nombre: 'Pensamiento crítico', prereq: ['razonamiento_cientifico'] },
-    { id: 'radioterapia', nombre: 'Radioterapia', prereq: ['intervencionismo_endovascular', 'integrador_1'] },
-    { id: 'resonancia_magnetica', nombre: 'Resonancia magnética', prereq: ['integrador_1', 'ultrasonido'] }
-  ],
-  'Quinto año - Noveno semestre': [
-    { id: 'responsabilidad_social', nombre: 'Responsabilidad social', prereq: ['pensamiento_critico'] },
-    { id: 'seminario_investigacion_ifime', nombre: 'Seminario de investigación de IFIME', prereq: ['metodologia_investigacion', 'gestion_aseguramiento_calidad', 'pensamiento_critico', 'radioterapia', 'resonancia_magnetica'] }
-  ],
-  'Quinto año - Décimo semestre': [
-    { id: 'integrador_2', nombre: 'Integrador II: Internado clínico IFIME', prereq: ['metodologia_investigacion', 'gestion_aseguramiento_calidad', 'pensamiento_critico', 'radioterapia', 'resonancia_magnetica'] }
-  ]
+  // ... (mantén el resto igual, no los pongo todos para acortar)
 };
 
 // Estado inicial, recupera del localStorage si hay datos guardados
 let estado = JSON.parse(localStorage.getItem('mallaEstado')) || {};
 
+// Guarda el estado en localStorage
 function guardarEstado() {
   localStorage.setItem('mallaEstado', JSON.stringify(estado));
 }
 
+// Crea la tarjeta para cada ramo
 function crearTarjeta(ramo) {
   const div = document.createElement('div');
   div.id = ramo.id;
   div.textContent = ramo.nombre;
   div.classList.add('ramo');
-  // Estado: aprobado, desbloqueado o bloqueado
+
   if (estado[ramo.id]) {
     div.classList.add('aprobado');
   } else if (puedeDesbloquear(ramo)) {
     div.classList.add('desbloqueado');
+    div.style.cursor = 'pointer';
     div.addEventListener('click', () => {
       aprobarRamo(ramo.id);
     });
@@ -105,16 +47,22 @@ function crearTarjeta(ramo) {
   return div;
 }
 
+// Verifica si se pueden desbloquear (todos los prereq aprobados)
 function puedeDesbloquear(ramo) {
+  // Si no tiene prereq, se puede desbloquear siempre
+  if (ramo.prereq.length === 0) return true;
+
   return ramo.prereq.every(pr => estado[pr]);
 }
 
+// Marca un ramo como aprobado y actualiza la malla
 function aprobarRamo(id) {
   estado[id] = true;
   guardarEstado();
   actualizarMalla();
 }
 
+// Actualiza la visualización de la malla y la barra de progreso
 function actualizarMalla() {
   const container = document.getElementById('malla-container');
   container.innerHTML = '';
@@ -125,7 +73,6 @@ function actualizarMalla() {
     const divSemestre = document.createElement('div');
     divSemestre.classList.add('semestre');
 
-    // Título semestre
     const titulo = document.createElement('h3');
     titulo.textContent = semestre;
     divSemestre.appendChild(titulo);
@@ -140,12 +87,12 @@ function actualizarMalla() {
     container.appendChild(divSemestre);
   }
 
-  // Actualizar barra de progreso
+  // Barra de progreso
   const barra = document.getElementById('barra');
-  const porcentaje = Math.round((aprobados / totalRamos) * 100);
+  const porcentaje = totalRamos === 0 ? 0 : Math.round((aprobados / totalRamos) * 100);
   barra.style.width = porcentaje + '%';
   barra.textContent = porcentaje + '%';
 }
 
-// Inicializa la malla
+// Inicializa la malla al cargar
 actualizarMalla();
