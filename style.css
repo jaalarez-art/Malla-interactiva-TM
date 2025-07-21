@@ -45,13 +45,7 @@ h1 {
   background-color: #b0276d;
 }
 
-/* Contenedor principal */
-#malla-container {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-/* Estilos para años y columnas */
+/* Nuevo estilos para años y columnas */
 .ano {
   margin-bottom: 40px;
 }
@@ -67,13 +61,14 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 20px;
-  flex-wrap: nowrap;  /* para que queden en fila */
-  max-width: 100%;
-  overflow-x: auto;   /* si hay muchos semestres, se puede desplazar */
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .semestre {
-  flex: 0 0 300px;  /* ancho fijo para cada semestre */
+  flex: 1 1 45%;
+  min-width: 280px;
   background: #f7a8c4;
   border-radius: 15px;
   padding: 10px;
@@ -81,7 +76,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  scroll-snap-align: start;
 }
 
 .semestre h3 {
