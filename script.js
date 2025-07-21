@@ -143,3 +143,9 @@ function actualizarMalla() {
 }
 
 actualizarMalla();
+function reiniciarMalla() {
+  localStorage.removeItem('mallaEstado');
+  estado = {};
+  actualizarMalla();
+}
+document.getElementById('btnReiniciar').addEventListener('click', reiniciarMalla);
