@@ -1,135 +1,113 @@
-/* 🎨 Estilo general */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 20px;
-  background: #fff0f6;
-  color: #3a1a2b;
+  font-family: Arial, sans-serif;
+  background-color: #ffeaf3;
+  color: #4a0033;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
 }
 
 h1 {
-  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+#btnReiniciar {
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
   margin-bottom: 20px;
 }
 
-/* 📊 Barra de progreso */
-.barra-container {
-  background: #f2d9e6;
-  border-radius: 12px;
+#btnReiniciar:hover {
+  background-color: #d81b60;
+}
+
+#progreso-container {
   width: 90%;
-  margin: 0 auto 30px auto;
-  height: 25px;
+  margin: 0 auto 30px;
+  background-color: #f8bbd0;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: inset 0 0 5px #d63384;
+  box-shadow: inset 0 0 8px #c2185b;
 }
 
-.barra {
-  background: #d63384;
-  height: 100%;
+#barra {
+  height: 25px;
   width: 0%;
-  text-align: center;
-  line-height: 25px;
+  background-color: #ec407a;
   color: white;
+  line-height: 25px;
   font-weight: bold;
-  transition: width 0.5s ease-in-out;
+  transition: width 0.3s ease;
+  border-radius: 20px;
 }
 
-/* 🔘 Botón */
-#btnReiniciar {
-  padding: 8px 16px;
-  background-color: #d63384;
-  color: white;
-  border: none;
+#malla-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+
+.ano {
+  width: 100%;
+}
+
+.ano h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.columnas-semestres {
+  display: flex;
+  flex-direction: row; /* Mostrar los semestres uno al lado del otro */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.semestre {
+  background-color: #f48fb1;
+  border-radius: 15px;
+  padding: 20px;
+  width: 260px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.semestre h3 {
+  font-size: 1.1rem;
+  border-bottom: 2px solid #880e4f;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  color: #880e4f;
+}
+
+.ramo {
+  background-color: #fce4ec;
+  margin: 8px 0;
+  padding: 10px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-#btnReiniciar:hover {
-  background-color: #b0276d;
-}
-
-/* 📚 Organización por años */
-.ano {
-  margin-bottom: 50px;
-  padding: 10px;
-}
-
-.ano h2 {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 15px;
-  color: #62145e;
-}
-
-/* 🧱 Semestres en columnas horizontales */
-.columnas-semestres {
-  display: flex;
-  flex-direction: row;
-  gap: 25px;
-  overflow-x: auto;
-  padding-bottom: 10px;
-  justify-content: flex-start;
-}
-
-/* 🧩 Estilo de cada semestre */
-.semestre {
-  background: #f7a8c4;
-  border-radius: 15px;
-  padding: 10px;
-  min-width: 220px;
-  max-width: 240px;
-  box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex-shrink: 0;
-}
-
-.semestre h3 {
-  margin: 5px 0 10px 0;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1rem;
-  color: #62145e;
-  border-bottom: 1px solid #d63384;
-  padding-bottom: 4px;
-}
-
-/* 📦 Ramos */
-.ramo {
-  padding: 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s ease;
-  color: white;
-}
-
-/* 🔒 Bloqueado */
-.ramo.bloqueado {
-  background-color: #f2d9e6;
-  color: #8b7d89;
-  cursor: default;
-}
-
-/* 🟡 Desbloqueado */
-.ramo.desbloqueado {
-  background-color: #f7a8c4;
-  color: #4a0033;
-}
-
-/* ✅ Aprobado */
 .ramo.aprobado {
-  background-color: #8ed6a0;
-  color: #103c24;
-  border: 2px solid #4caf50;
-  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
+  background-color: #c8e6c9;
+  color: #2e7d32;
 }
 
-.ramo:hover.desbloqueado {
-  filter: brightness(1.1);
+.ramo.desbloqueado {
+  background-color: #fff9c4;
+}
+
+.ramo.bloqueado {
+  background-color: #fce4ec;
+  opacity: 0.5;
+  cursor: default;
 }
