@@ -1,3 +1,4 @@
+/* 🎨 Estilo general */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 20px;
@@ -10,6 +11,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* 📊 Barra de progreso */
 .barra-container {
   background: #f2d9e6;
   border-radius: 12px;
@@ -31,6 +33,7 @@ h1 {
   transition: width 0.5s ease-in-out;
 }
 
+/* 🔘 Botón */
 #btnReiniciar {
   padding: 8px 16px;
   background-color: #d63384;
@@ -39,15 +42,17 @@ h1 {
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 #btnReiniciar:hover {
   background-color: #b0276d;
 }
 
-/* Nuevo estilos para años y columnas */
+/* 📚 Organización por años */
 .ano {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  padding: 10px;
 }
 
 .ano h2 {
@@ -57,58 +62,69 @@ h1 {
   color: #62145e;
 }
 
+/* 🧱 Semestres en columnas horizontales */
 .columnas-semestres {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  max-width: 700px;
-  margin: 0 auto;
+  flex-direction: row;
+  gap: 25px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  justify-content: flex-start;
 }
 
+/* 🧩 Estilo de cada semestre */
 .semestre {
-  flex: 1 1 45%;
-  min-width: 280px;
   background: #f7a8c4;
   border-radius: 15px;
   padding: 10px;
+  min-width: 220px;
+  max-width: 240px;
   box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
   display: flex;
   flex-direction: column;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .semestre h3 {
   margin: 5px 0 10px 0;
   text-align: center;
   font-weight: 700;
+  font-size: 1rem;
   color: #62145e;
+  border-bottom: 1px solid #d63384;
+  padding-bottom: 4px;
 }
 
+/* 📦 Ramos */
 .ramo {
-  padding: 12px 8px;
+  padding: 10px;
   border-radius: 10px;
-  color: white;
+  font-size: 0.9rem;
   font-weight: 600;
   text-align: center;
   cursor: pointer;
   user-select: none;
   transition: background-color 0.3s ease;
+  color: white;
 }
 
+/* 🔒 Bloqueado */
 .ramo.bloqueado {
   background-color: #f2d9e6;
   color: #8b7d89;
   cursor: default;
 }
 
+/* 🟡 Desbloqueado */
 .ramo.desbloqueado {
   background-color: #f7a8c4;
   color: #4a0033;
 }
 
+/* ✅ Aprobado */
 .ramo.aprobado {
-  background-color: #8ed6a0;  /* verde suave para destacar */
+  background-color: #8ed6a0;
   color: #103c24;
   border: 2px solid #4caf50;
   box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
