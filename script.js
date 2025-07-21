@@ -1,5 +1,3 @@
-// Copia y pega TODO este código en script.js (remplaza el contenido actual):
-
 const malla = {
   'Primer año - Primer semestre': [
     { id: 'anatomia_humana', nombre: 'Anatomía humana', prereq: [] },
