@@ -58,8 +58,8 @@ h1 {
 .ano {
   display: flex;
   flex-direction: column;
-  align-items: center;  /* 🔹 Centra el texto */
-  min-width: 600px;     /* 🔹 Ancho mínimo para scroll */
+  align-items: center;
+  min-width: 900px; /* ⬅️ Aumenta este valor según cuántos semestres tiene cada año */
 }
 
 .ano h2 {
