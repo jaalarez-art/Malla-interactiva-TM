@@ -64,10 +64,11 @@ h1 {
 
 .columnas-semestres {
   display: flex;
-  flex-direction: row; /* Mostrar los semestres uno al lado del otro */
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 30px;
+  gap: 40px;
+  flex-wrap: nowrap; /* Evita que los semestres se bajen */
+  overflow-x: auto;   /* Permite scroll horizontal si se necesita */
+  padding-bottom: 10px;
 }
 
 .semestre {
