@@ -48,7 +48,7 @@ h1 {
 
 #malla-container {
   display: flex;
-  flex-direction: row;  /* 🔹 Cambia a fila horizontal */
+  flex-direction: row;
   gap: 40px;
   align-items: flex-start;
   overflow-x: auto;
@@ -59,7 +59,7 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 900px; /* ⬅️ Aumenta este valor según cuántos semestres tiene cada año */
+  min-width: 900px;
 }
 
 .ano h2 {
@@ -70,10 +70,10 @@ h1 {
 .columnas-semestres {
   display: flex;
   justify-content: center;
-  gap: 60px; /* ⬅️ Aumenta este valor para más espacio entre semestres */
+  gap: 60px;
   flex-wrap: nowrap;
   overflow-x: auto;
-  padding-bottom: 20px; /* un poco más de espacio inferior */
+  padding-bottom: 20px;
 }
 
 .semestre {
@@ -83,6 +83,7 @@ h1 {
   width: 260px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
+  flex-shrink: 0; /* ✅ Añadido para evitar que se sobrepongan */
 }
 
 .semestre h3 {
