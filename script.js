@@ -1,119 +1,100 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 20px;
-  background: #fff0f6;
-  color: #3a1a2b;
+// Define tu malla con estructura correcta aquí, ejemplo:
+const malla = {
+  "1 - Semestre 1": [
+    { id: "mat1", nombre: "Matemáticas I", prereq: [] },
+    { id: "fis1", nombre: "Física I", prereq: [] }
+  ],
+  "1 - Semestre 2": [
+    { id: "mat2", nombre: "Matemáticas II", prereq: ["mat1"] },
+    { id: "fis2", nombre: "Física II", prereq: ["fis1"] }
+  ],
+  // Añade los demás semestres y materias...
+};
+
+let estado = JSON.parse(localStorage.getItem('mallaEstado')) || {};
+
+function guardarEstado() {
+  localStorage.setItem('mallaEstado', JSON.stringify(estado));
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+function crearTarjeta(ramo) {
+  const div = document.createElement('div');
+  div.id = ramo.id;
+  div.textContent = ramo.nombre;
+  div.classList.add('ramo');
+
+  if (estado[ramo.id]) {
+    div.classList.add('aprobado');
+  } else if (puedeDesbloquear(ramo)) {
+    div.classList.add('desbloqueado');
+    div.addEventListener('click', () => {
+      aprobarRamo(ramo.id);
+    });
+  } else {
+    div.classList.add('bloqueado');
+  }
+
+  return div;
 }
 
-.barra-container {
-  background: #f2d9e6;
-  border-radius: 12px;
-  width: 90%;
-  margin: 0 auto 30px auto;
-  height: 25px;
-  overflow: hidden;
-  box-shadow: inset 0 0 5px #d63384;
+function puedeDesbloquear(ramo) {
+  // Si prereq está vacío, se puede desbloquear siempre
+  return ramo.prereq.every(pr => estado[pr]);
 }
 
-.barra {
-  background: #d63384;
-  height: 100%;
-  width: 0%;
-  text-align: center;
-  line-height: 25px;
-  color: white;
-  font-weight: bold;
-  transition: width 0.5s ease-in-out;
+function aprobarRamo(id) {
+  estado[id] = true;
+  guardarEstado();
+  actualizarMalla();
 }
 
-#btnReiniciar {
-  padding: 8px 16px;
-  background-color: #d63384;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
+function actualizarMalla() {
+  const container = document.getElementById('malla-container');
+  container.innerHTML = '';
+
+  const agrupadoPorAno = {};
+
+  for (const semestre in malla) {
+    const [ano, nombreSemestre] = semestre.split(' - ');
+    if (!agrupadoPorAno[ano]) agrupadoPorAno[ano] = [];
+    agrupadoPorAno[ano].push({
+      nombre: nombreSemestre,
+      ramos: malla[semestre]
+    });
+  }
+
+  for (const ano in agrupadoPorAno) {
+    const divAno = document.createElement('div');
+    divAno.classList.add('ano');
+
+    const tituloAno = document.createElement('h2');
+    tituloAno.textContent = `Año ${ano}`;
+    divAno.appendChild(tituloAno);
+
+    const contenedorSemestres = document.createElement('div');
+    contenedorSemestres.classList.add('columnas-semestres');
+
+    agrupadoPorAno[ano].forEach(semestre => {
+      const divSemestre = document.createElement('div');
+      divSemestre.classList.add('semestre');
+
+      const tituloSemestre = document.createElement('h3');
+      tituloSemestre.textContent = semestre.nombre;
+      divSemestre.appendChild(tituloSemestre);
+
+      semestre.ramos.forEach(ramo => {
+        const tarjeta = crearTarjeta(ramo);
+        divSemestre.appendChild(tarjeta);
+      });
+
+      contenedorSemestres.appendChild(divSemestre);
+    });
+
+    divAno.appendChild(contenedorSemestres);
+    container.appendChild(divAno);
+  }
+
+  actualizarBarraProgreso();
 }
 
-#btnReiniciar:hover {
-  background-color: #b0276d;
-}
-
-/* Nuevo estilos para años y columnas */
-.ano {
-  margin-bottom: 40px;
-}
-
-.ano h2 {
-  text-align: center;
-  font-size: 22px;
-  margin-bottom: 15px;
-  color: #62145e;
-}
-
-.columnas-semestres {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.semestre {
-  flex: 1 1 45%;
-  min-width: 280px;
-  background: #f7a8c4;
-  border-radius: 15px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.semestre h3 {
-  margin: 5px 0 10px 0;
-  text-align: center;
-  font-weight: 700;
-  color: #62145e;
-}
-
-.ramo {
-  padding: 12px 8px;
-  border-radius: 10px;
-  color: white;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s ease;
-}
-
-.ramo.bloqueado {
-  background-color: #f2d9e6;
-  color: #8b7d89;
-  cursor: default;
-}
-
-.ramo.desbloqueado {
-  background-color: #f7a8c4;
-  color: #4a0033;
-}
-
-.ramo.aprobado {
-  background-color: #8ed6a0;  /* verde suave para destacar */
-  color: #103c24;
-  border: 2px solid #4caf50;
-  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
-}
-
-.ramo:hover.desbloqueado {
-  filter: brightness(1.1);
-}
+function actualizarBarraPr
