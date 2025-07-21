@@ -115,27 +115,56 @@ function aprobarRamo(id) {
 function actualizarMalla() {
   const container = document.getElementById('malla-container');
   container.innerHTML = '';
-  let totalRamos = 0;
-  let aprobados = 0;
+
+  // Agrupar semestres por año
+  const anos = {};
 
   for (const semestre in malla) {
-    const divSemestre = document.createElement('div');
-    divSemestre.classList.add('semestre');
+    const ano = semestre.split(' - ')[0];
+    if (!anos[ano]) anos[ano] = [];
+    anos[ano].push({ nombre: semestre, ramos: malla[semestre] });
+  }
 
-    const titulo = document.createElement('h3');
-    titulo.textContent = semestre;
-    divSemestre.appendChild(titulo);
+  for (const ano in anos) {
+    const divAno = document.createElement('div');
+    divAno.classList.add('ano');
 
+    const tituloAno = document.createElement('h2');
+    tituloAno.textContent = ano;
+    divAno.appendChild(tituloAno);
+
+    const columnas = document.createElement('div');
+    columnas.classList.add('columnas-semestres');
+
+    anos[ano].forEach(semestreObj => {
+      const divSemestre = document.createElement('div');
+      divSemestre.classList.add('semestre');
+
+      const tituloSemestre = document.createElement('h3');
+      tituloSemestre.textContent = semestreObj.nombre;
+      divSemestre.appendChild(tituloSemestre);
+
+      semestreObj.ramos.forEach(ramo => {
+        const tarjeta = crearTarjeta(ramo);
+        divSemestre.appendChild(tarjeta);
+      });
+
+      columnas.appendChild(divSemestre);
+    });
+
+    divAno.appendChild(columnas);
+    container.appendChild(divAno);
+  }
+
+  // Actualizar barra progreso
+  let totalRamos = 0;
+  let aprobados = 0;
+  for (const semestre in malla) {
     malla[semestre].forEach(ramo => {
       totalRamos++;
       if (estado[ramo.id]) aprobados++;
-      const tarjeta = crearTarjeta(ramo);
-      divSemestre.appendChild(tarjeta);
     });
-
-    container.appendChild(divSemestre);
   }
-
   const barra = document.getElementById('barra');
   const porcentaje = Math.round((aprobados / totalRamos) * 100);
   barra.style.width = porcentaje + '%';
@@ -143,9 +172,11 @@ function actualizarMalla() {
 }
 
 actualizarMalla();
+
 function reiniciarMalla() {
   localStorage.removeItem('mallaEstado');
   estado = {};
   actualizarMalla();
 }
+
 document.getElementById('btnReiniciar').addEventListener('click', reiniciarMalla);
