@@ -10,7 +10,7 @@ const malla = {
   'Primer año - Segundo semestre': [
     { id: 'histoembriologia', nombre: 'Histoembriología', prereq: ['anatomia_humana', 'biologia_celular'] },
     { id: 'fisica_general', nombre: 'Física general', prereq: ['algebra_calculo'] },
-    { id: 'quimica_organica', nombre: 'Química orgánica', prereq: [quimica_general] },
+    { id: 'quimica_organica', nombre: 'Química orgánica', prereq: ['quimica_general'] },
     { id: 'ingles_1', nombre: 'Inglés I', prereq: [] },
     { id: 'habilidades_comunicativas', nombre: 'Habilidades comunicativas', prereq: [] }
   ],
